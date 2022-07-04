@@ -29,6 +29,8 @@ class DcatVueController extends Controller
             ->insert(array_map(fn($item) => ['name' => $item, 'created_at' => now(), 'disk' => $request['disk']],
                 (array)$request['files']
             ));
+
+        return Storage::disk($request['disk'])->url($request['files']);
     }
 
     public function obsConfig(Request $request)
@@ -36,7 +38,7 @@ class DcatVueController extends Controller
         switch ($request['disk']) {
             case 'oss':
                 return json_decode(
-                    Storage::disk('oss')->getAdapter()->signatureConfig(prefix: config('admin.upload.directory.file'), expire: 3600),
+                    Storage::disk('oss')->getAdapter()->signatureConfig(prefix: dirname($request['filename']), expire: 3600),
                     true
                 );
 

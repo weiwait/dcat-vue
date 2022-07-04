@@ -7,7 +7,9 @@ use Dcat\Admin\Admin;
 use Dcat\Admin\Form;
 use Illuminate\Support\Facades\Event;
 use Weiwait\DcatVue\Field\File;
+use Weiwait\DcatVue\Field\Image;
 use Weiwait\DcatVue\Field\MultipleFile;
+use Weiwait\DcatVue\Field\MultipleImage;
 use Weiwait\DcatVue\Field\Vue;
 use Weiwait\DcatVue\Models\FilesystemConfig;
 
@@ -34,6 +36,8 @@ class DcatVueServiceProvider extends ServiceProvider
 //		Form::extend('vue', Vue::class);
 		Form::extend('file', File::class);
 		Form::extend('multipleFile', MultipleFile::class);
+        Form::extend('image', Image::class);
+        Form::extend('multipleImage', MultipleImage::class);
 
         Admin::asset()->css(Admin::asset()->getAlias('@weiwait.dcat-vue')['css']);
 
