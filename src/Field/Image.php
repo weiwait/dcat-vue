@@ -3,6 +3,7 @@
 namespace Weiwait\DcatVue\Field;
 
 use Dcat\Admin\Form\Field;
+use Dcat\Admin\Support\Helper;
 use Weiwait\DcatVue\Models\WeiwaitUpload;
 
 class Image extends Field\Image
@@ -30,6 +31,10 @@ class Image extends Field\Image
         $this->withScript();
 
         $this->withProvides();
+
+        if (! empty($this->value())) {
+            $this->setupPreviewOptions();
+        }
 
         $this->addVariables([
             'provides' => $this->variables(),
@@ -120,5 +125,16 @@ class Image extends Field\Image
         $this->mergeOptions(['large' => 'large']);
 
         return $this;
+    }
+
+    protected function initialPreviewConfig(): array
+    {
+        $previews = [];
+
+        foreach (Helper::array($this->value()) as $value) {
+            $previews[] = $this->objectUrl($value);
+        }
+
+        return $previews;
     }
 }
