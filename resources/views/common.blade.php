@@ -1,4 +1,4 @@
-@php($id = $column . random_int(123456, 987654))
+@php($id = join('_', (array)str_replace(['[', ']'], '', $name)) . '_' . Str::random(6))
 
 <div class="{{$viewClass['form-group']}}" >
 
@@ -8,7 +8,7 @@
 
     </div>
 </div>
-<script type="module" id="{{$column}}">
+<script type="module">
     import app from '/vendor/dcat-admin-extensions/weiwait/dcat-vue/js/index.js';
     const App = app()
 

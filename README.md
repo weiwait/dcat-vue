@@ -17,7 +17,7 @@
   composer require weiwait/dcat-vue
 ```
 
-### 通过选项卡使用
+### 文件系统-通过选项卡使用
 ```php
     public function index(Content $content): Content
     {
@@ -29,7 +29,7 @@
     }
 ```
 
-### 通过一级菜单使用
+### 文件系统-通过一级菜单使用
 
 ![](https://github.com/weiwait/images/blob/main/dcat-smtp-menu.png?raw=true)
 
@@ -37,11 +37,29 @@
 
 ![示例图片](https://raw.githubusercontent.com/weiwait/images/main/dcat-filesystem-config.png)
 
-### 直传表单组件
+### 已有表单组件
 ```php
-    // 默认替换了原有的组件
-    $form->file('file');
-    $form->mutipleFile('files');
+    $form->vFile('file') // 关联文件系统配置-直传
+        ->accept('mime types');
+        
+    $form->vMutipleFile('files') // 关联文件系统配置-直传
+        ->accept('mime types');
+        
+    $form->vImage('image') // 关联文件系统配置-直传-裁剪
+        ->ratio(16 / 9) // 固定裁剪比例
+        ->large() // 放大裁剪框
+        ->resolution(1920, 1080) // 重置图片分辨率
+        ->jpeg(0.8) // 裁剪为jpeg格式, 参数为图片质量0-1
+        ->accept('mime types');
+        
+    $form->vMultipleImage('images') // 关联文件系统配置-直传-裁剪
+        ->ratio(16 / 9) // 固定裁剪比例
+        ->large() // 放大裁剪框
+        ->resolution(1920, 1080) // 重置图片分辨率
+        ->jpeg(0.8) // 裁剪为jpeg格式, 参数为图片质量0-1
+        ->accept('mime types');
+        
+    $form->vTags('tags');
 ```
 
 [comment]: <> (### Donate)
@@ -49,7 +67,7 @@
 [comment]: <> (![示例图片]&#40;https://github.com/weiwait/images/blob/main/donate.png?raw=true&#41;)
 
 ### Dcat-admin 扩展列表
-1. [单图裁剪](https://github.com/weiwait/dcat-cropper)
+1. [图片裁剪](https://github.com/weiwait/dcat-cropper)
 2. [区划级联+坐标拾取](https://github.com/weiwait/dcat-distpicker)
-3. [smtp快速便捷配置](https://github.com/weiwait/dcat-smtp)
-4. [sms channel 快速便捷配置](https://github.com/weiwait/dcat-easy-sms)
+3. [smtp 便捷配置](https://github.com/weiwait/dcat-smtp)
+4. [sms channel 便捷配置](https://github.com/weiwait/dcat-easy-sms)

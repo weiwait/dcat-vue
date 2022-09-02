@@ -8,7 +8,7 @@ use Dcat\Admin\Widgets\Checkbox as WidgetCheckbox;
 
 class Vue extends Field\Checkbox
 {
-    protected $view = 'weiwait.dcat-vue::index';
+    protected $view = 'weiwait.dcat-vue::common';
 
     protected array $watch = [];
 

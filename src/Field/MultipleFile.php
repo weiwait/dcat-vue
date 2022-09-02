@@ -7,7 +7,7 @@ use Weiwait\DcatVue\Models\WeiwaitUpload;
 
 class MultipleFile extends Field\MultipleFile
 {
-    protected $view = 'weiwait.dcat-vue::file';
+    protected $view = 'weiwait.dcat-vue::common';
     protected string $disk;
 
     protected function prepareInputValue($file): array

@@ -5,31 +5,17 @@ namespace Weiwait\DcatVue\Field;
 use Dcat\Admin\Form\Field;
 use Dcat\Admin\Support\Helper;
 
-class Tag extends Field\Tags
+class DateRange extends Field\DateRange
 {
     protected $view = 'weiwait.dcat-vue::common';
 
     public function render()
     {
         /****************************** parent ************************************/
-        $value = Helper::array($this->value());
 
-        if ($this->options instanceof \Closure) {
-            $this->options(
-                $this->options->call($this->values(), $value, $this)
-            );
-        }
+        $this->options['locale'] = config('app.locale');
 
-        if ($this->keyAsValue) {
-            $options = $value + $this->options;
-        } else {
-            $options = array_unique(array_merge($value, (array) $this->options));
-        }
-
-        $this->addVariables([
-            'options'    => $options,
-            'keyAsValue' => $this->keyAsValue,
-        ]);
+        $this->addVariables(['options' => $this->options]);
 
         /****************************** field ************************************/
 
@@ -62,13 +48,25 @@ class Tag extends Field\Tags
     protected function withProvides()
     {
         $this->addVariables([
-            'component' => 'Tag',
+            'component' => 'DateRange',
        ]);
     }
 
     public function max(int $max): self
     {
         $this->addVariables(['max' => $max]);
+
+        return $this;
+    }
+
+    public function disableDates(array $dates): self
+    {
+        $datesObj = [];
+        foreach ($dates as $item) {
+            $datesObj[] = ['start' => $item[0], 'end' => $item[1] ?? null];
+        }
+
+        $this->addVariables(['disableDates' => $datesObj]);
 
         return $this;
     }
