@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Event;
 use Weiwait\DcatVue\Field\DateRange;
 use Weiwait\DcatVue\Field\File;
 use Weiwait\DcatVue\Field\Image;
+use Weiwait\DcatVue\Field\KeyValue;
+use Weiwait\DcatVue\Field\ListField;
 use Weiwait\DcatVue\Field\MultipleFile;
 use Weiwait\DcatVue\Field\MultipleImage;
 use Weiwait\DcatVue\Field\Tag;
@@ -41,6 +43,8 @@ class DcatVueServiceProvider extends ServiceProvider
         Form::extend('vImage', Image::class);
         Form::extend('vMultipleImage', MultipleImage::class);
         Form::extend('vTags', Tag::class);
+        Form::extend('vList', ListField::class);
+        Form::extend('vKeyValue', KeyValue::class);
 //        Form::extend('dateRange', DateRange::class);
 
         Admin::asset()->css(Admin::asset()->getAlias('@weiwait.dcat-vue')['css']);

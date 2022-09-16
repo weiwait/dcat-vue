@@ -37,7 +37,7 @@
 
 ![示例图片](https://raw.githubusercontent.com/weiwait/images/main/dcat-filesystem-config.png)
 
-### 已有表单组件
+### 已有表单组件(采用的是Naive UI)
 ```php
     $form->vFile('file') // 关联文件系统配置-直传
         ->accept('mime types');
@@ -59,7 +59,17 @@
         ->jpeg(0.8) // 裁剪为jpeg格式, 参数为图片质量0-1
         ->accept('mime types');
         
-    $form->vTags('tags');
+    $form->vTags('tags'); // 标签
+    
+    $form->vList('list')
+        ->sortable() // 开启排序
+        ->max(8); // 限制最大添加数量
+        
+    $form->vKeyValue('kvs')
+        ->sortable() // 开启排序
+        ->serial() // 开启固定有序索引 默认为字母A-Z
+        ->keys(['一', '二', '三', '四']) // serial后自定义索引
+        ->list(); // serial后只提交值，保存为一维数组(索引仅作为显示)
 ```
 
 [comment]: <> (### Donate)
