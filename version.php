@@ -37,4 +37,7 @@ return [
         '新增list表单组件',
         '新增keyValue表单组件',
     ],
+    '2.1.1' => [
+        '优化keyValue回显'
+    ],
 ];
