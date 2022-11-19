@@ -57,6 +57,10 @@ class DcatVueServiceProvider extends ServiceProvider
 
     protected function hackConfigs()
     {
+        if (is_file(app()->getCachedConfigPath())) {
+            return;
+        }
+
         app()->booted(function () {
             config()->set('filesystems.disks.oss', [
                 'access_key' => FilesystemConfig::get('oss_access_key'),
