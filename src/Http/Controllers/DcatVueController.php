@@ -48,7 +48,7 @@ class DcatVueController extends Controller
                     config('filesystems.disks.qiniu.bucket')
                 );
                 return [
-                    'token' => Storage::disk('qiniu')->getAdapter()->getUploadToken($request['filename'], 3600),
+                    'token' => Storage::disk('qiniu')->getAdapter()->uploadToken($request['filename'], 3600),
                     'host' => $url,
                 ];
             case 'cos':
