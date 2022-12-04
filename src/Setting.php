@@ -3,6 +3,7 @@
 namespace Weiwait\DcatVue;
 
 use Dcat\Admin\Extend\Setting as Form;
+use Weiwait\DcatVue\Models\FilesystemConfig;
 use Dcat\Admin\Models\Menu;
 
 class Setting extends Form
