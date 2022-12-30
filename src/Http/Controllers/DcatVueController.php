@@ -43,6 +43,9 @@ class DcatVueController extends Controller
                 );
 
             case 'qiniu':
+                $config = new Config();
+                $scheme = request()->server->get('REQUEST_SCHEME');
+                $config->useHTTPS = ($scheme=='https');
                 $url = (new Config())->getUpHost(
                     config('filesystems.disks.qiniu.access_key'),
                     config('filesystems.disks.qiniu.bucket')
