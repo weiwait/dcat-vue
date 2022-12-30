@@ -4,6 +4,7 @@ namespace Weiwait\DcatVue\Field;
 
 use Dcat\Admin\Form\Field;
 use Dcat\Admin\Support\Helper;
+use Illuminate\Support\Str;
 
 class Tag extends Field\Tags
 {
@@ -63,6 +64,7 @@ class Tag extends Field\Tags
     {
         $this->addVariables([
             'component' => 'Tag',
+            'mountId' => 'id' . md5(Str::uuid()),
        ]);
     }
 

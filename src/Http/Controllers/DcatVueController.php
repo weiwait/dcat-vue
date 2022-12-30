@@ -6,9 +6,11 @@ use Dcat\Admin\Layout\Content;
 use Dcat\Admin\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Qiniu\Config;
 use Weiwait\DcatVue\Forms\FilesystemConfig;
+use Weiwait\DcatVue\Models\ChinaArea;
 use Weiwait\DcatVue\Models\WeiwaitUpload;
 
 class DcatVueController extends Controller
@@ -43,10 +45,14 @@ class DcatVueController extends Controller
                 );
 
             case 'qiniu':
-                $url = (new Config())->getUpHost(
+                $config = new Config();
+                $config->useHTTPS = 'https' == $request->getScheme();
+
+                $url = $config->getUpHost(
                     config('filesystems.disks.qiniu.access_key'),
                     config('filesystems.disks.qiniu.bucket')
                 );
+
                 return [
                     'token' => Storage::disk('qiniu')->getAdapter()->getUploadToken($request['filename'], 3600),
                     'host' => $url,
@@ -85,5 +91,28 @@ class DcatVueController extends Controller
     {
         return $content
             ->body(new FilesystemConfig());
+    }
+
+    public function regions(Request $request)
+    {
+        $items = ChinaArea::query()->where('pcode', $request->get('pcode', 0))
+            ->get(['code as value', 'name as label', 'pcode']);
+
+        return response()->json(['items' => $items]);
+    }
+
+    public function address2ll(Request $request)
+    {
+        $sign =  'rYRi7PfL5beOtUfcABaF4MIFHaHGDPE';
+
+        $uri = "/ws/geocoder/v1/?address={$request['address']}&key=ZZQBZ-WE6E2-FCMUZ-CBUZ7-ZW5I3-I7BIX";
+        $uri .= '&sig=' . md5($uri . $sign);
+
+        return Http::get('https://apis.map.qq.com' . $uri)->body();
+    }
+
+    public function ll2address(Request $request)
+    {
+        return Http::get("https://apis.map.qq.com/ws/geocoder/v1/?location={$request['lat']},{$request['lng']}&key=ZZQBZ-WE6E2-FCMUZ-CBUZ7-ZW5I3-I7BIX&get_poi=1")->body();
     }
 }

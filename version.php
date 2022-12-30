@@ -43,4 +43,10 @@ return [
     '2.1.2' => [
         '优化配置注入'
     ],
+    '2.2.0' => [
+        '一些优化',
+        '新增行政区划选择',
+        'create_china_areas_table.php',
+        'ChinaAreaTableSeeder.php',
+    ],
 ];

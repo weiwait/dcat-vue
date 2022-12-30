@@ -4,6 +4,7 @@ namespace Weiwait\DcatVue\Field;
 
 use Dcat\Admin\Form\Field;
 use Dcat\Admin\Support\Helper;
+use Illuminate\Support\Str;
 
 class ListField extends Field\ListField
 {
@@ -54,6 +55,7 @@ class ListField extends Field\ListField
     {
         $this->addVariables([
             'component' => 'List',
+            'mountId' => 'id' . md5(Str::uuid()),
        ]);
     }
 

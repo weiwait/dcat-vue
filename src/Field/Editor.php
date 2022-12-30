@@ -5,18 +5,21 @@ namespace Weiwait\DcatVue\Field;
 use Dcat\Admin\Form\Field;
 use Dcat\Admin\Support\Helper;
 use Illuminate\Support\Str;
+use Weiwait\DcatVue\Field\Traits\UploadTrait;
 
-class DateRange extends Field\DateRange
+class Editor extends Field\Editor
 {
+    use UploadTrait;
+
     protected $view = 'weiwait.dcat-vue::common';
 
     public function render()
     {
         /****************************** parent ************************************/
 
-        $this->options['locale'] = config('app.locale');
-
-        $this->addVariables(['options' => $this->options]);
+        $this->addVariables([
+            'options' => $this->formatOptions(),
+        ]);
 
         /****************************** field ************************************/
 
@@ -34,6 +37,8 @@ class DateRange extends Field\DateRange
 
         $this->withProvides();
 
+        $this->withUpload();
+
         $this->addVariables([
             'provides' => $this->variables(),
         ]);
@@ -49,27 +54,8 @@ class DateRange extends Field\DateRange
     protected function withProvides()
     {
         $this->addVariables([
-            'component' => 'DateRange',
+            'component' => 'Editor',
             'mountId' => 'id' . md5(Str::uuid()),
        ]);
-    }
-
-    public function max(int $max): self
-    {
-        $this->addVariables(['max' => $max]);
-
-        return $this;
-    }
-
-    public function disableDates(array $dates): self
-    {
-        $datesObj = [];
-        foreach ($dates as $item) {
-            $datesObj[] = ['start' => $item[0], 'end' => $item[1] ?? null];
-        }
-
-        $this->addVariables(['disableDates' => $datesObj]);
-
-        return $this;
     }
 }

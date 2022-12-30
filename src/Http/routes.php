@@ -14,3 +14,12 @@ Route::post('weiwait/file/uploaded', [Controllers\DcatVueController::class, 'upl
 // 本地上传
 Route::post('weiwait/file/upload', [Controllers\DcatVueController::class, 'upload'])
     ->name('weiwait.file.upload');
+// 区划
+Route::get('weiwait/distpicker/regions', [Controllers\DcatVueController::class, 'regions'])
+    ->name('weiwait.distpicker.regions');
+// 地址解析
+Route::get('weiwait/distpicker/address2ll', [Controllers\DcatVueController::class, 'address2ll'])
+    ->name('weiwait.distpicker.address2ll');
+// 坐标位置信息
+Route::get('weiwait/distpicker/ll2address', [Controllers\DcatVueController::class, 'll2address'])
+    ->name('weiwait.distpicker.ll2address');

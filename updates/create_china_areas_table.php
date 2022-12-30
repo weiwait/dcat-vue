@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWeiwaitUpload extends Migration
+class CreateChinaArea extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateWeiwaitUpload extends Migration
      */
     public function up()
     {
-        Schema::create('weiwait_uploads', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name')->comment('文件');
-            $table->string('disk')->nullable()->comment('磁盘');
+        Schema::create('china_areas', function (Blueprint $table) {
+            $table->id('code');
+            $table->string('name')->comment('地区');
+            $table->unsignedTinyInteger('level')->index();
+            $table->unsignedBigInteger('pcode')->index()->comment('上级区划');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateWeiwaitUpload extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('weiwait_uploads');
+        Schema::dropIfExists('china_areas');
     }
 }

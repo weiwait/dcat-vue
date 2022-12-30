@@ -6,6 +6,7 @@ use Dcat\Admin\Form\Field;
 use Dcat\Admin\Support\Helper;
 use Illuminate\Support\Arr;
 use Illuminate\Support\MessageBag;
+use Illuminate\Support\Str;
 use function Swoole\Coroutine\map;
 
 class KeyValue extends Field\KeyValue
@@ -143,6 +144,7 @@ class KeyValue extends Field\KeyValue
     {
         $this->addVariables([
             'component' => 'KeyValue',
+            'mountId' => 'id' . md5(Str::uuid()),
         ]);
     }
 

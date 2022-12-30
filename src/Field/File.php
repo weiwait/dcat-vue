@@ -3,6 +3,7 @@
 namespace Weiwait\DcatVue\Field;
 
 use Dcat\Admin\Form\Field;
+use Illuminate\Support\Str;
 use Weiwait\DcatVue\Models\WeiwaitUpload;
 
 class File extends Field\File
@@ -49,6 +50,7 @@ class File extends Field\File
 
         $this->addVariables([
             'component' => 'File',
+            'mountId' => 'id' . md5(Str::uuid()),
             'multiple' => false,
             'disk' => $this->disk ?? $disk,
             'dir' => $this->getDirectory(),

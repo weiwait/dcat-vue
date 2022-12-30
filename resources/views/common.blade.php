@@ -1,10 +1,8 @@
-@php($id = join('_', (array)str_replace(['[', ']'], '', $name)) . '_' . Str::random(6))
-
 <div class="{{$viewClass['form-group']}}" >
 
     <label class="{{$viewClass['label']}} control-label pt-0">{!! $label !!}</label>
 
-    <div class="{{$viewClass['field']}}" id="{{ $id }}">
+    <div class="{{$viewClass['field']}}" id="{{ $mountId }}">
 
     </div>
 </div>
@@ -13,5 +11,11 @@
     const App = app()
 
     App.provide('provides', @json($provides, true))
-    App.mount('#{{ $id }}')
+    App.mount('#{{ $mountId }}')
+
+    if (!window.dv) {
+        window.dv = {instances: {}, maps: {wemap: false}}
+    }
+
+    window.dv.instances["{{ $mountId }}"] = App
 </script>

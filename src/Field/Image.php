@@ -4,6 +4,7 @@ namespace Weiwait\DcatVue\Field;
 
 use Dcat\Admin\Form\Field;
 use Dcat\Admin\Support\Helper;
+use Illuminate\Support\Str;
 use Weiwait\DcatVue\Models\WeiwaitUpload;
 
 class Image extends Field\Image
@@ -54,6 +55,7 @@ class Image extends Field\Image
 
         $this->addVariables([
             'component' => 'Image',
+            'mountId' => 'id' . md5(Str::uuid()),
             'multiple' => false,
             'disk' => $this->disk ?? $disk,
             'dir' => $this->getDirectory(),

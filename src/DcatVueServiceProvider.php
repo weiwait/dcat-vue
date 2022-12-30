@@ -5,8 +5,10 @@ namespace Weiwait\DcatVue;
 use Dcat\Admin\Extend\ServiceProvider;
 use Dcat\Admin\Admin;
 use Dcat\Admin\Form;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Event;
 use Weiwait\DcatVue\Field\DateRange;
+use Weiwait\DcatVue\Field\Distpicker;
 use Weiwait\DcatVue\Field\File;
 use Weiwait\DcatVue\Field\Image;
 use Weiwait\DcatVue\Field\KeyValue;
@@ -20,7 +22,7 @@ use Weiwait\DcatVue\Models\FilesystemConfig;
 class DcatVueServiceProvider extends ServiceProvider
 {
 	protected $js = [
-        'js/index.js',
+        'js/helper.js',
     ];
 	protected $css = [
 		'css/index.css',
@@ -35,6 +37,8 @@ class DcatVueServiceProvider extends ServiceProvider
 	{
 		parent::init();
 
+        $this->loadMigrationsFrom(__DIR__ . '/../migrations');
+
         $this->hackConfigs();
 
 //		Form::extend('vue', Vue::class);
@@ -45,9 +49,10 @@ class DcatVueServiceProvider extends ServiceProvider
         Form::extend('vTags', Tag::class);
         Form::extend('vList', ListField::class);
         Form::extend('vKeyValue', KeyValue::class);
-//        Form::extend('dateRange', DateRange::class);
+        Form::extend('vDistpicker', Distpicker::class);
+        Form::extend('vDateRange', DateRange::class);
 
-        Admin::asset()->css(Admin::asset()->getAlias('@weiwait.dcat-vue')['css']);
+        Admin::requireAssets('@weiwait.dcat-vue');
 	}
 
 	public function settingForm()
