@@ -70,6 +70,16 @@
         ->serial() // 开启固定有序索引 默认为字母A-Z
         ->keys(['一', '二', '三', '四']) // serial后自定义索引
         ->list(); // serial后只提交值，保存为一维数组(索引仅作为显示)
+        
+    $form->vDistpicker('region')
+        ->dist('province', 'city', 'district') // 开启区划
+        ->coordinate('latitude', 'longitude') // 开启坐标
+        ->detail('detail') // 开启详细地址
+        ->disableMap() // 关闭地图
+        ->mapHeight(380) // 地图高度，默认380
+        ->disableRegions([440000]) // 禁用一些区划
+        ->mapZoom(11); // 地图默认缩放
+        ->mapZoom(11, 'zoom') // 记录地图缩放级别
 ```
 
 [comment]: <> (### Donate)
