@@ -49,4 +49,8 @@ return [
         'create_china_areas_table.php',
         'ChinaAreaTableSeeder.php',
     ],
+    '2.3.0' => [
+        '一些优化',
+        '新增选择组件',
+    ],
 ];

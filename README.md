@@ -80,6 +80,11 @@
         ->disableRegions([440000]) // 禁用一些区划
         ->mapZoom(11); // 地图默认缩放
         ->mapZoom(11, 'zoom') // 记录地图缩放级别
+
+    $form->vSelect('select')
+        ->options(['123', '456', 'A' => 'aaa']) // 选项
+        ->concatKey('separator') // 显示键
+        ->optionsFromKeyValue('kvs'); // 用于结合vKeyValue进行选项选择
 ```
 
 [comment]: <> (### Donate)

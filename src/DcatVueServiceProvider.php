@@ -15,6 +15,7 @@ use Weiwait\DcatVue\Field\KeyValue;
 use Weiwait\DcatVue\Field\ListField;
 use Weiwait\DcatVue\Field\MultipleFile;
 use Weiwait\DcatVue\Field\MultipleImage;
+use Weiwait\DcatVue\Field\Select;
 use Weiwait\DcatVue\Field\Tag;
 use Weiwait\DcatVue\Field\Vue;
 use Weiwait\DcatVue\Models\FilesystemConfig;
@@ -41,6 +42,11 @@ class DcatVueServiceProvider extends ServiceProvider
 
         $this->hackConfigs();
 
+        $this->exceptRoutes = [
+            'auth' => 'weiwait*',
+            'permission' => 'weiwait*',
+        ];
+
 //		Form::extend('vue', Vue::class);
 		Form::extend('vFile', File::class);
 		Form::extend('vMultipleFile', MultipleFile::class);
@@ -51,6 +57,7 @@ class DcatVueServiceProvider extends ServiceProvider
         Form::extend('vKeyValue', KeyValue::class);
         Form::extend('vDistpicker', Distpicker::class);
         Form::extend('vDateRange', DateRange::class);
+        Form::extend('vSelect', Select::class);
 
         Admin::requireAssets('@weiwait.dcat-vue');
 	}
