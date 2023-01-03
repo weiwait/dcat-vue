@@ -85,6 +85,11 @@
         ->options(['123', '456', 'A' => 'aaa']) // 选项
         ->concatKey('separator') // 显示键
         ->optionsFromKeyValue('kvs'); // 用于结合vKeyValue进行选项选择
+
+    $form->vMultipleSelect('ms', '多选')
+        ->options(['123', '456', 'A' => 'aaa']) // 选项
+        ->concatKey('separator') // 显示键
+        ->optionsFromKeyValue('kvs'); // 用于结合vKeyValue进行选项选择
 ```
 
 [comment]: <> (### Donate)

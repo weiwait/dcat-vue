@@ -15,6 +15,7 @@ use Weiwait\DcatVue\Field\KeyValue;
 use Weiwait\DcatVue\Field\ListField;
 use Weiwait\DcatVue\Field\MultipleFile;
 use Weiwait\DcatVue\Field\MultipleImage;
+use Weiwait\DcatVue\Field\MultipleSelect;
 use Weiwait\DcatVue\Field\Select;
 use Weiwait\DcatVue\Field\Tag;
 use Weiwait\DcatVue\Field\Vue;
@@ -58,6 +59,7 @@ class DcatVueServiceProvider extends ServiceProvider
         Form::extend('vDistpicker', Distpicker::class);
         Form::extend('vDateRange', DateRange::class);
         Form::extend('vSelect', Select::class);
+        Form::extend('vMultipleSelect', MultipleSelect::class);
 
         Admin::requireAssets('@weiwait.dcat-vue');
 	}
