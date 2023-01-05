@@ -9,12 +9,15 @@ use Illuminate\Support\Facades\Storage;
 use OSS\Core\OssException;
 use OSS\Model\CorsConfig;
 use OSS\Model\CorsRule;
+use Weiwait\DcatVue\Helper;
 
 class FilesystemConfig extends Form
 {
     public function handle(array $input): JsonResponse
     {
         try {
+            Helper::injectFilesystemConfig(collect($input));
+
             $this->ossHandler($input);
 
             admin_setting(['weiwait_filesystem' => $input]);
