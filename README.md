@@ -6,7 +6,7 @@
 [demo: http://dcat.weiwait.cn (admin:admin)](http://dcat.weiwait.cn/admin/demo-settings 'user: admin psw: admin')
 
 ### 依赖扩展
-[freyo/flysystem-qcloud-cos-v5](https://github.com/freyo/flysystem-qcloud-cos-v5)
+[overtrue/laravel-filesystem-cos](https://github.com/overtrue/laravel-filesystem-cos)
 
 [overtrue/laravel-filesystem-qiniu](https://github.com/overtrue/laravel-filesystem-qiniu)
 
@@ -29,9 +29,10 @@
     }
 ```
 
-### 文件系统-通过一级菜单使用
+[//]: # (### 文件系统-通过一级菜单使用)
 
-![](https://github.com/weiwait/images/blob/main/dcat-smtp-menu.png?raw=true)
+[//]: # ()
+[//]: # (![]&#40;https://github.com/weiwait/images/blob/main/dcat-smtp-menu.png?raw=true&#41;)
 
 ### 示例图片
 

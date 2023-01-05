@@ -6,10 +6,12 @@ use Dcat\Admin\Layout\Content;
 use Dcat\Admin\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Qiniu\Config;
 use Weiwait\DcatVue\Forms\FilesystemConfig;
+use Weiwait\DcatVue\Helper;
 use Weiwait\DcatVue\Models\ChinaArea;
 use Weiwait\DcatVue\Models\WeiwaitUpload;
 
@@ -59,9 +61,12 @@ class DcatVueController extends Controller
                 ];
             case 'cos':
             case 'cosv5':
-                $url = parse_url(Storage::disk('cosv5')->url(''));
+                $url = parse_url(Storage::disk('cos')->url(''));
+                $auth = Helper::getCosAuth();
                 return [
-                    'auth' => Storage::disk('cosv5')->getFederationTokenV3($request['filename']),
+                    'auth' => [
+                        'token' => Arr::get($auth, 'credentials.sessionToken'),
+                    ],
                     'host' => $url['scheme'] . '://' . $url['host'] . '/' . $request['filename'],
                 ];
             default:

@@ -63,4 +63,8 @@ return [
         '一些优化',
         '新增多选组件',
     ],
+    '2.5.0' => [
+        '一些优化',
+        'drop_filesystem_configs_table.php',
+    ],
 ];
