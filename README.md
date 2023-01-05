@@ -34,9 +34,16 @@
 [//]: # ()
 [//]: # (![]&#40;https://github.com/weiwait/images/blob/main/dcat-smtp-menu.png?raw=true&#41;)
 
-### 示例图片
-
-![示例图片](https://raw.githubusercontent.com/weiwait/images/main/dcat-filesystem-config.png)
+##### 文件系统
+![文件系统](https://raw.githubusercontent.com/weiwait/images/main/dcat-filesystem-config.png)
+##### 行政区划、坐标
+![区划选择](https://raw.githubusercontent.com/weiwait/images/main/dcat-v-distpicker.png)
+##### 图片裁剪(支持多图)
+![区划选择](https://raw.githubusercontent.com/weiwait/images/main/dcat-v-cropper.png)
+##### 日期范围
+![区划选择](https://raw.githubusercontent.com/weiwait/images/main/dcat-v-daterange.png)
+##### 列表、选择
+![区划选择](https://raw.githubusercontent.com/weiwait/images/main/dcat-v-other.png)
 
 ### 已有表单组件(采用的是Naive UI)
 ```php
@@ -98,7 +105,9 @@
 [comment]: <> (![示例图片]&#40;https://github.com/weiwait/images/blob/main/donate.png?raw=true&#41;)
 
 ### Dcat-admin 扩展列表
-1. [图片裁剪](https://github.com/weiwait/dcat-cropper)
-2. [区划级联+坐标拾取](https://github.com/weiwait/dcat-distpicker)
+
+[//]: # (1. [图片裁剪]&#40;https://github.com/weiwait/dcat-cropper&#41;)
+
+[//]: # (2. [区划级联+坐标拾取]&#40;https://github.com/weiwait/dcat-distpicker&#41;)
 3. [smtp 便捷配置](https://github.com/weiwait/dcat-smtp)
 4. [sms channel 便捷配置](https://github.com/weiwait/dcat-easy-sms)

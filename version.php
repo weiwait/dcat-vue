@@ -67,4 +67,7 @@ return [
         '一些优化',
         'drop_filesystem_configs_table.php',
     ],
+    '2.5.1' => [
+        '一些优化',
+    ],
 ];
