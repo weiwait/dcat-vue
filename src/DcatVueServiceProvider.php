@@ -72,7 +72,7 @@ class DcatVueServiceProvider extends ServiceProvider
             return;
         }
 
-        $configs = admin_setting_array('weiwait_filesystem');
+        $configs = collect(admin_setting_array('weiwait_filesystem'));
 
 //        dd($configs);
 
@@ -81,7 +81,7 @@ class DcatVueServiceProvider extends ServiceProvider
         });
 
         Event::listen('admin:booted', function () use ($configs) {
-            config()->set('admin.upload.disk', $configs['disk']);
+            config()->set('admin.upload.disk', $configs->get('disk', config('admin.upload.disk')));
         });
     }
 }

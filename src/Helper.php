@@ -2,14 +2,13 @@
 
 namespace Weiwait\DcatVue;
 
+use Illuminate\Support\Collection;
 use QCloud\COSSTS\Sts;
 
 class Helper
 {
-    public static function injectFilesystemConfig(array $configs): void
+    public static function injectFilesystemConfig(Collection $configs): void
     {
-        $configs = collect($configs);
-
         config()->set('filesystems.disks.oss', [
             'access_key' => $configs->get('oss_access_key'),
             'secret_key' => $configs->get('oss_secret_key'),
@@ -66,9 +65,9 @@ class Helper
             ],
         ]);
 
-        config()->set('filesystems.default', $configs->get('disk'));
+        config()->set('filesystems.default', $configs->get('disk', config('filesystems.default')));
 
-        config()->set('admin.upload.disk', $configs->get('disk'));
+        config()->set('admin.upload.disk', $configs->get('disk', config('admin.upload.disk')));
     }
 
     public static function getCosAuth(): array
