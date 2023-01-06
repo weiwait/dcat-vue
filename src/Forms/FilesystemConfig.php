@@ -41,7 +41,7 @@ class FilesystemConfig extends Form
         $methodChanged = collect($config->get('oss_allowed_methods', []))->diff($data['oss_allowed_methods']);
         $masChanged = collect($config->get('oss_mas', 0))->diff($data['oss_mas']);
 
-        if ($originChanged || $methodChanged || $masChanged) {
+        if ($originChanged->isNotEmpty() || $methodChanged->isNotEmpty() || $masChanged->isNotEmpty()) {
             $rule = new CorsRule();
             $rule->setMaxAgeSeconds($data['oss_mas']);
 
