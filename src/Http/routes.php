@@ -23,3 +23,7 @@ Route::get('weiwait/distpicker/address2ll', [Controllers\DcatVueController::clas
 // 坐标位置信息
 Route::get('weiwait/distpicker/ll2address', [Controllers\DcatVueController::class, 'll2address'])
     ->name('weiwait.distpicker.ll2address');
+
+// 替换原生登录
+Route::get('auth/login', [Controllers\DcatAuthController::class, 'getLogin']);
+Route::post('auth/login', [Controllers\DcatAuthController::class, 'postLogin']);

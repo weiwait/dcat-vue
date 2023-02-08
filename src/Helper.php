@@ -103,4 +103,12 @@ class Helper
         // 获取临时密钥，计算签名
         return (new Sts())->getTempKeys($config);
     }
+
+    public static function injectAuthConfigs()
+    {
+        config()->set('captcha.default.length', 4);
+        config()->set('captcha.default.height', 34);
+        config()->set('captcha.default.width', 100);
+        config()->set('captcha.default.quality', 100);
+    }
 }

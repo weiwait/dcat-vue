@@ -100,6 +100,23 @@
         ->optionsFromKeyValue('kvs'); // 用于结合vKeyValue进行选项选择
 ```
 
+##### 登录验证码
+![示例图片](https://github.com/weiwait/images/blob/main/dcat-auth.png?raw=true)
+
+```php
+class SettingController extends Controller
+{
+    public function index(Content $content): Content
+    {
+        $tab = Tab::make();
+        $tab->add('站点配置', new AuthSetting());
+
+        return $content->title('配置')
+            ->body($tab->withCard());
+    }
+}
+```
+
 [comment]: <> (### Donate)
 
 [comment]: <> (![示例图片]&#40;https://github.com/weiwait/images/blob/main/donate.png?raw=true&#41;)

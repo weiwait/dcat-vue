@@ -74,10 +74,9 @@ class DcatVueServiceProvider extends ServiceProvider
 
         $configs = collect(admin_setting_array('weiwait_filesystem'));
 
-//        dd($configs);
-
         app()->booted(function () use ($configs) {
             Helper::injectFilesystemConfig($configs);
+            Helper::injectAuthConfigs();
         });
 
         Event::listen('admin:booted', function () use ($configs) {
