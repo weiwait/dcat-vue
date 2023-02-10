@@ -11,6 +11,7 @@ class Image extends Field\Image
 {
     protected $view = 'weiwait.dcat-vue::common';
     protected string $disk;
+    protected bool $disableCropper = false;
 
     protected function prepareInputValue($file)
     {
@@ -61,6 +62,7 @@ class Image extends Field\Image
             'dir' => $this->getDirectory(),
             'uploaded_url' => route('dcat.admin.weiwait.file.uploaded'),
             'obs_config_url' => route('dcat.admin.weiwait.file.obs-config'),
+            'disableCropper' => $this->disableCropper,
        ]);
     }
 
@@ -138,5 +140,12 @@ class Image extends Field\Image
         }
 
         return $previews;
+    }
+
+    public function disableCropper(bool $disable = true): static
+    {
+        $this->disableCropper = $disable;
+
+        return $this;
     }
 }
