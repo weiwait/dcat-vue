@@ -27,3 +27,7 @@ Route::get('weiwait/distpicker/ll2address', [Controllers\DcatVueController::clas
 // 替换原生登录
 Route::get('auth/login', [Controllers\DcatAuthController::class, 'getLogin']);
 Route::post('auth/login', [Controllers\DcatAuthController::class, 'postLogin']);
+
+// 同步存储
+Route::post('weiwait/storage/sync', [Controllers\DcatVueController::class, 'syncStorage'])
+    ->name('weiwait.storage.sync');

@@ -120,4 +120,53 @@ class DcatVueController extends Controller
     {
         return Http::get("https://apis.map.qq.com/ws/geocoder/v1/?location={$request['lat']},{$request['lng']}&key=ZZQBZ-WE6E2-FCMUZ-CBUZ7-ZW5I3-I7BIX&get_poi=1")->body();
     }
+
+    public function syncStorage(Request $request)
+    {
+        $request->validate([
+            'source' => 'required|string',
+            'target' => 'required|string',
+            'timeout' => 'required|integer',
+            'max' => 'required|integer',
+        ]);
+
+        $start = now();
+
+        try {
+            $source = Storage::disk($request['source']);
+            $source->put('/sync-touch', 'touch');
+            $source->delete('sync-touch');
+
+            $target = Storage::disk($request['target']);
+            $target->put('/sync-touch', 'touch');
+            $target->delete('sync-touch');
+        } catch (\Throwable $exception) {
+            return 2;
+        }
+
+        try {
+            $sources = $source->allFiles('/');
+            $targets = $target->allFiles('/');
+
+            $files = array_diff($sources, $targets);
+
+            foreach ($files as $file) {
+                if (now()->diffInSeconds($start) > $request['timeout']) {
+                    return 0;
+                }
+
+                if ($source->size($file) > ($request['max'] * 1024 * 1024)) {
+                    return 1;
+                }
+
+                $target->put($file, $source->get($file));
+            }
+
+            return 1;
+        } catch (\Throwable $exception) {
+
+        }
+
+        return 0;
+    }
 }
