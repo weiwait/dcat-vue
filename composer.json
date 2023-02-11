@@ -19,7 +19,8 @@
         "iidestiny/laravel-filesystem-oss": "^3.1",
         "overtrue/laravel-filesystem-qiniu": "^2.1",
         "overtrue/laravel-filesystem-cos": "^3.1",
-        "qcloud_sts/qcloud-sts-sdk": "^3.0"
+        "qcloud_sts/qcloud-sts-sdk": "^3.0",
+        "mews/captcha": "^3.2"
     },
     "autoload": {
         "psr-4": {
