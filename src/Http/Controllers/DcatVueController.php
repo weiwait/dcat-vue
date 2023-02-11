@@ -156,7 +156,7 @@ class DcatVueController extends Controller
                 }
 
                 if ($source->size($file) > ($request['max'] * 1024 * 1024)) {
-                    return 1;
+                    continue;
                 }
 
                 $target->put($file, $source->get($file));

@@ -92,4 +92,7 @@ return [
     '2.7.1' => [
         'bug fixed',
     ],
+    '2.7.2' => [
+        'bug fixed',
+    ],
 ];
