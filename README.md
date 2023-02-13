@@ -99,6 +99,15 @@
         ->options(['123', '456', 'A' => 'aaa']) // 选项
         ->concatKey('separator') // 显示键
         ->optionsFromKeyValue('kvs'); // 用于结合vKeyValue进行选项选择
+
+    $form->vNumber('number', '数字')
+        ->prepend('$') // 前缀
+        ->prepend('p') // 后缀
+        ->bothButton() // 按钮位置分离到两端
+        ->step(2) // 步进
+        ->min(2) // 最小值
+        ->max(88) // 最大值
+        ->precision(2); // 开启小数，精度
 ```
 
 ##### 登录验证码
