@@ -98,4 +98,7 @@ return [
     '2.8.0' => [
         'new! number component',
     ],
+    '2.8.1' => [
+        'bug fixed',
+    ],
 ];

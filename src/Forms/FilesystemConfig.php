@@ -18,7 +18,9 @@ class FilesystemConfig extends Form
         try {
             Helper::injectFilesystemConfig(collect($input));
 
-            $this->ossHandler($input);
+            if ('oss' == $input['disk']) {
+                $this->ossHandler($input);
+            }
 
             admin_setting(['weiwait_filesystem' => $input]);
 
