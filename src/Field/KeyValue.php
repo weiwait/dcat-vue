@@ -7,11 +7,13 @@ use Dcat\Admin\Support\Helper;
 use Illuminate\Support\Arr;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Str;
+use Weiwait\DcatVue\Field\Traits\FieldCommon;
 use function Swoole\Coroutine\map;
 
 class KeyValue extends Field\KeyValue
 {
-    protected $view = 'weiwait.dcat-vue::common';
+    use FieldCommon;
+
     private bool $is_list = false;
     private bool $is_serial = false;
     private bool $is_sortable = false;

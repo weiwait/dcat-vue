@@ -4,11 +4,13 @@ namespace Weiwait\DcatVue\Field;
 
 use Dcat\Admin\Form\Field;
 use Dcat\Admin\Support\Helper;
-use Illuminate\Support\Str;
+use Weiwait\DcatVue\Field\Traits\FieldCommon;
+use Weiwait\DcatVue\Field\Traits\HasOptions;
 
 class Select extends Field\Select
 {
-    protected $view = 'weiwait.dcat-vue::common';
+    use HasOptions, FieldCommon;
+
     private string $optionsFromKeyValueField = '';
     private string $concatSeparator = '';
 
@@ -69,7 +71,6 @@ class Select extends Field\Select
     {
         $this->addVariables([
             'component' => 'Select',
-            'mountId' => 'id' . md5(Str::uuid()),
             'optionsFromKeyValueField' => $this->optionsFromKeyValueField,
             'concatSeparator' => $this->concatSeparator,
         ]);

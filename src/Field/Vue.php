@@ -5,10 +5,11 @@ namespace Weiwait\DcatVue\Field;
 use Dcat\Admin\Form\Field;
 use Dcat\Admin\Support\Helper;
 use Dcat\Admin\Widgets\Checkbox as WidgetCheckbox;
+use Weiwait\DcatVue\Field\Traits\FieldCommon;
 
 class Vue extends Field\Checkbox
 {
-    protected $view = 'weiwait.dcat-vue::common';
+    use FieldCommon;
 
     protected array $watch = [];
 

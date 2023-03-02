@@ -2,7 +2,7 @@
 
     <label class="{{$viewClass['label']}} control-label pt-0">{!! $label !!}</label>
 
-    <div class="{{$viewClass['field']}}" id="{{ $mountId }}">
+    <div class="{{$viewClass['field']}}" id="{{ $vid }}">
 
     </div>
 </div>
@@ -11,11 +11,11 @@
     const App = app()
 
     App.provide('provides', @json($provides, true))
-    App.mount('#{{ $mountId }}')
+    App.mount('#{{ $vid }}')
 
     if (!window.dv) {
         window.dv = {instances: {}, maps: {wemap: false}}
     }
 
-    window.dv.instances["{{ $mountId }}"] = App
+    window.dv.instances["{{ $vid }}"] = App
 </script>

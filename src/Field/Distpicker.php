@@ -5,10 +5,11 @@ namespace Weiwait\DcatVue\Field;
 use Dcat\Admin\Form\Field;
 use Exception;
 use Illuminate\Support\Str;
+use Weiwait\DcatVue\Field\Traits\FieldCommon;
 
 class Distpicker extends Field
 {
-    protected $view = 'weiwait.dcat-vue::common';
+    use FieldCommon;
     // 地图高度
     protected string $height = '380px';
     // 模板id

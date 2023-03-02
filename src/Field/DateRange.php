@@ -5,10 +5,11 @@ namespace Weiwait\DcatVue\Field;
 use Dcat\Admin\Form\Field;
 use Dcat\Admin\Support\Helper;
 use Illuminate\Support\Str;
+use Weiwait\DcatVue\Field\Traits\FieldCommon;
 
 class DateRange extends Field\DateRange
 {
-    protected $view = 'weiwait.dcat-vue::common';
+    use FieldCommon;
 
     public function render()
     {
@@ -50,7 +51,6 @@ class DateRange extends Field\DateRange
     {
         $this->addVariables([
             'component' => 'DateRange',
-            'mountId' => 'id' . md5(Str::uuid()),
        ]);
     }
 

@@ -5,10 +5,12 @@ namespace Weiwait\DcatVue\Field;
 use Dcat\Admin\Form\Field;
 use Dcat\Admin\Support\Helper;
 use Illuminate\Support\Str;
+use Weiwait\DcatVue\Field\Traits\FieldCommon;
 
 class MultipleSelect extends Field\MultipleSelect
 {
-    protected $view = 'weiwait.dcat-vue::common';
+    use FieldCommon;
+
     private string $optionsFromKeyValueField = '';
     private string $concatSeparator = '';
 

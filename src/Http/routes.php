@@ -31,3 +31,7 @@ Route::post('auth/login', [Controllers\DcatAuthController::class, 'postLogin']);
 // 同步存储
 Route::post('weiwait/storage/sync', [Controllers\DcatVueController::class, 'syncStorage'])
     ->name('weiwait.storage.sync');
+
+// 模型选项
+Route::post('weiwait/options/model', [Controllers\OptionController::class, 'model'])
+    ->name('weiwait.options.model');

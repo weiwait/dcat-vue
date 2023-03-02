@@ -4,11 +4,13 @@ namespace Weiwait\DcatVue\Field;
 
 use Dcat\Admin\Form\Field;
 use Illuminate\Support\Str;
+use Weiwait\DcatVue\Field\Traits\FieldCommon;
 use Weiwait\DcatVue\Models\WeiwaitUpload;
 
 class File extends Field\File
 {
-    protected $view = 'weiwait.dcat-vue::common';
+    use FieldCommon;
+
     protected string $disk;
 
     protected function prepareInputValue($file)
