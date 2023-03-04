@@ -104,4 +104,7 @@ return [
     '2.8.2' => [
         'bug fixed',
     ],
+    '2.8.3' => [
+        'fixed date range',
+    ],
 ];
