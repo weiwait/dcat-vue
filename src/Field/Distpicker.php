@@ -41,8 +41,13 @@ class Distpicker extends Field
      */
     public function __construct($label)
     {
-        $this->areaId = md5(Str::uuid());
         parent::__construct([], [$label]);
+
+        $this->areaId = md5(Str::uuid());
+
+        $this->view = 'weiwait.dcat-vue::common';
+
+        $this->makeVid();
     }
 
     public function dist(string $province = null, string $city = null, string $district = null): self

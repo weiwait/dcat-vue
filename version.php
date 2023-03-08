@@ -116,4 +116,7 @@ return [
     '2.9.0' => [
         'checkbox & watch',
     ],
+    '2.9.1' => [
+        'fixed bugs',
+    ],
 ];
