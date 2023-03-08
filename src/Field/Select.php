@@ -6,10 +6,11 @@ use Dcat\Admin\Form\Field;
 use Dcat\Admin\Support\Helper;
 use Weiwait\DcatVue\Field\Traits\FieldCommon;
 use Weiwait\DcatVue\Field\Traits\HasOptions;
+use Weiwait\DcatVue\Field\Traits\HasWatch;
 
 class Select extends Field\Select
 {
-    use HasOptions, FieldCommon;
+    use HasOptions, FieldCommon, HasWatch;
 
     private string $optionsFromKeyValueField = '';
     private string $concatSeparator = '';

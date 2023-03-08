@@ -6,10 +6,11 @@ use Dcat\Admin\Form\Field;
 use Dcat\Admin\Support\Helper;
 use Illuminate\Support\Str;
 use Weiwait\DcatVue\Field\Traits\FieldCommon;
+use Weiwait\DcatVue\Field\Traits\HasWatch;
 
 class MultipleSelect extends Field\MultipleSelect
 {
-    use FieldCommon;
+    use FieldCommon, HasWatch;
 
     private string $optionsFromKeyValueField = '';
     private string $concatSeparator = '';

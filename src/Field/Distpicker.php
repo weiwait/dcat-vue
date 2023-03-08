@@ -6,10 +6,11 @@ use Dcat\Admin\Form\Field;
 use Exception;
 use Illuminate\Support\Str;
 use Weiwait\DcatVue\Field\Traits\FieldCommon;
+use Weiwait\DcatVue\Field\Traits\HasWatch;
 
 class Distpicker extends Field
 {
-    use FieldCommon;
+    use FieldCommon, HasWatch;
     // 地图高度
     protected string $height = '380px';
     // 模板id

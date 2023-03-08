@@ -5,11 +5,12 @@ namespace Weiwait\DcatVue\Field;
 use Dcat\Admin\Form\Field;
 use Illuminate\Support\Str;
 use Weiwait\DcatVue\Field\Traits\FieldCommon;
+use Weiwait\DcatVue\Field\Traits\HasWatch;
 use Weiwait\DcatVue\Models\WeiwaitUpload;
 
 class File extends Field\File
 {
-    use FieldCommon;
+    use FieldCommon, HasWatch;
 
     protected string $disk;
 

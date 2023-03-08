@@ -8,11 +8,12 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Str;
 use Weiwait\DcatVue\Field\Traits\FieldCommon;
+use Weiwait\DcatVue\Field\Traits\HasWatch;
 use function Swoole\Coroutine\map;
 
 class KeyValue extends Field\KeyValue
 {
-    use FieldCommon;
+    use FieldCommon, HasWatch;
 
     private bool $is_list = false;
     private bool $is_serial = false;

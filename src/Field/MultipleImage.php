@@ -6,11 +6,12 @@ use Dcat\Admin\Form\Field;
 use Dcat\Admin\Support\Helper;
 use Illuminate\Support\Str;
 use Weiwait\DcatVue\Field\Traits\FieldCommon;
+use Weiwait\DcatVue\Field\Traits\HasWatch;
 use Weiwait\DcatVue\Models\WeiwaitUpload;
 
 class MultipleImage extends Field\MultipleImage
 {
-    use FieldCommon;
+    use FieldCommon, HasWatch;
 
     protected string $disk;
 

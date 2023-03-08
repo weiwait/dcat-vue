@@ -6,6 +6,7 @@ use Dcat\Admin\Extend\ServiceProvider;
 use Dcat\Admin\Admin;
 use Dcat\Admin\Form;
 use Illuminate\Support\Facades\Event;
+use Weiwait\DcatVue\Field\Checkbox;
 use Weiwait\DcatVue\Field\DateRange;
 use Weiwait\DcatVue\Field\Distpicker;
 use Weiwait\DcatVue\Field\File;
@@ -59,6 +60,7 @@ class DcatVueServiceProvider extends ServiceProvider
         Form::extend('vSelect', Select::class);
         Form::extend('vMultipleSelect', MultipleSelect::class);
         Form::extend('vNumber', Number::class);
+        Form::extend('vCheckbox', Checkbox::class);
 
         Admin::requireAssets('@weiwait.dcat-vue');
 	}

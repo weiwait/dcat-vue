@@ -113,4 +113,7 @@ return [
     '2.8.5' => [
         'fixed replace of multiple image',
     ],
+    '2.9.0' => [
+        'checkbox & watch',
+    ],
 ];

@@ -6,12 +6,12 @@ use Dcat\Admin\Form\Field;
 use Dcat\Admin\Support\Helper;
 use Dcat\Admin\Widgets\Checkbox as WidgetCheckbox;
 use Weiwait\DcatVue\Field\Traits\FieldCommon;
+use Weiwait\DcatVue\Field\Traits\HasOptions;
+use Weiwait\DcatVue\Field\Traits\HasWatch;
 
-class Vue extends Field\Checkbox
+class Checkbox extends Field\Checkbox
 {
-    use FieldCommon;
-
-    protected array $watch = [];
+    use FieldCommon, HasOptions, HasWatch;
 
     public function render()
     {
@@ -30,8 +30,9 @@ class Vue extends Field\Checkbox
 
         $this->addVariables([
             'checked' => $this->checked,
-            'watch' => $this->watch,
         ]);
+
+        $this->withProvides();
 
         $this->addVariables([
             'provides' => $this->variables(),
@@ -45,7 +46,7 @@ class Vue extends Field\Checkbox
         return $this->attributes;
     }
 
-    public function disabled($disabled): Vue
+    public function disabled($disabled): static
     {
         $this->addVariables([
             'disabled' => (array) $disabled
@@ -54,14 +55,11 @@ class Vue extends Field\Checkbox
         return $this;
     }
 
-    public function watch($column, $handler): Vue
+    protected function withProvides()
     {
-        $this->watch[] = [
-            'type' => "$column:change",
-            'handler' => $handler,
-        ];
-
-        return $this;
+        $this->addVariables([
+            'component' => 'Checkbox',
+        ]);
     }
 
     protected function checkboxRender()

@@ -6,11 +6,12 @@ use Dcat\Admin\Form\Field;
 use Dcat\Admin\Support\Helper;
 use Illuminate\Support\Str;
 use Weiwait\DcatVue\Field\Traits\FieldCommon;
+use Weiwait\DcatVue\Field\Traits\HasWatch;
 use Weiwait\DcatVue\Models\WeiwaitUpload;
 
 class Image extends Field\Image
 {
-    use FieldCommon;
+    use FieldCommon, HasWatch;
 
     protected string $disk;
     protected bool $disableCropper = false;
