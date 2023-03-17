@@ -67,8 +67,20 @@
         ->resolution(1920, 1080) // 重置图片分辨率
         ->jpeg(0.8) // 裁剪为jpeg格式, 参数为图片质量0-1
         ->mimeTypes('image/*');
-        
-    $form->vTags('tags'); // 标签
+     // 标签
+     // each vComponent has watch method
+    $form->vTags('tags')
+        ->watch('list as field name', <<<JS
+            (target, current, store) => {
+                // the tag component of naive ui expect format: {label: string, value: string}
+                current.options.push({label: target, value: target});
+                
+                store.request({method: 'get', url: '/admin'})
+                    .then(res => console.log(res));
+                
+                store.getForm('kvs as field name').value = []
+            }
+        JS);
     
     $form->vList('list')
         ->sortable() // 开启排序
