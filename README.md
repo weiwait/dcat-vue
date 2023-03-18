@@ -77,8 +77,7 @@
                 
                 store.request({method: 'get', url: '/admin'})
                     .then(res => console.log(res));
-                
-                store.getForm('kvs as field name').value = []
+                console.log(store.forms.list)
             }
         JS);
     

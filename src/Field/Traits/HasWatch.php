@@ -2,18 +2,14 @@
 
 namespace Weiwait\DcatVue\Field\Traits;
 
-use Dcat\Admin\Exception\RuntimeException;
-use Dcat\Admin\Form\Field;
-use Illuminate\Database\Eloquent\Model;
-
 trait HasWatch
 {
-    public function watch(string $field, string $handler): static
+    public function watch(string $target, string $handler): static
     {
         $this->addVariables([
             'watches' => array_merge(
                 $this->variables()['watches'] ?? [],
-                [compact('field', 'handler')]
+                [compact('target', 'handler')]
             )
         ]);
 

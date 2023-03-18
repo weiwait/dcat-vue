@@ -4,7 +4,6 @@ namespace Weiwait\DcatVue\Field;
 
 use Dcat\Admin\Form\Field;
 use Dcat\Admin\Support\Helper;
-use Dcat\Admin\Widgets\Checkbox as WidgetCheckbox;
 use Weiwait\DcatVue\Field\Traits\FieldCommon;
 use Weiwait\DcatVue\Field\Traits\HasOptions;
 use Weiwait\DcatVue\Field\Traits\HasWatch;
