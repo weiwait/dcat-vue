@@ -2,6 +2,8 @@
 
 namespace Weiwait\DcatVue\Field\Traits;
 
+use Illuminate\Support\Str;
+
 trait FieldCommon
 {
     protected string $vid;
@@ -17,7 +19,7 @@ trait FieldCommon
 
     public function makeVid(): static
     {
-        $this->vid = 'vid' . md5(uuid_create());
+        $this->vid = 'vid' . md5(Str::uuid());
 
         $this->addVariables([
             'vid' => $this->vid,
