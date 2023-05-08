@@ -10,6 +10,7 @@ use Weiwait\DcatVue\Field\Checkbox;
 use Weiwait\DcatVue\Field\DateRange;
 use Weiwait\DcatVue\Field\Distpicker;
 use Weiwait\DcatVue\Field\File;
+use Weiwait\DcatVue\Field\Icon;
 use Weiwait\DcatVue\Field\Image;
 use Weiwait\DcatVue\Field\KeyValue;
 use Weiwait\DcatVue\Field\ListField;
@@ -61,16 +62,21 @@ class DcatVueServiceProvider extends ServiceProvider
         Form::extend('vMultipleSelect', MultipleSelect::class);
         Form::extend('vNumber', Number::class);
         Form::extend('vCheckbox', Checkbox::class);
+        Form::extend('icon', Icon::class);
+        Form::extend('vIcon', Icon::class);
+        Form::extend('oIcon', Form\Field\Icon::class);
 
         Admin::requireAssets('@weiwait.dcat-vue');
+
+        $this->injectColorToIcon();
 	}
 
-	public function settingForm()
-	{
+	public function settingForm(): Setting
+    {
 		return new Setting($this);
 	}
 
-    protected function hackConfigs()
+    protected function hackConfigs(): void
     {
         if (is_file(app()->getCachedConfigPath())) {
             return;
@@ -86,5 +92,18 @@ class DcatVueServiceProvider extends ServiceProvider
         Event::listen('admin:booted', function () use ($configs) {
             config()->set('admin.upload.disk', $configs->get('disk', config('admin.upload.disk')));
         });
+    }
+
+    private function injectColorToIcon(): void
+    {
+        $colors = admin_setting_array('weiwait_icon_color');
+
+        $style = '';
+        foreach ($colors as $color) {
+            $class = str_replace('#', '-', $color);
+            $style .= ".vic$class{color:$color}";
+        }
+
+        Admin::style($style);
     }
 }

@@ -119,6 +119,10 @@
         ->min(2) // 最小值
         ->max(88) // 最大值
         ->precision(2); // 开启小数，精度
+
+    $form->vIcon('icon', '图标') // icon vIcon oIcon
+        ->withColorColumn('color') // 独立的hex颜色字段，默认是合并到图标类型后面
+        ->closeColorPicker();
 ```
 
 ##### 登录验证码

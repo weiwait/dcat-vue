@@ -128,4 +128,7 @@ return [
     '2.10.2' => [
         'uuid',
     ],
+    '2.11.0' => [
+        "covered the icon field of form",
+    ],
 ];
