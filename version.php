@@ -140,4 +140,7 @@ return [
     '2.12.2' => [
         "fixed bugs",
     ],
+    '2.12.3' => [
+        "fixed bugs",
+    ],
 ];

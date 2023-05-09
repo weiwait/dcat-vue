@@ -29,7 +29,11 @@ class Icon extends Field
     protected function prepareInputValue($value)
     {
         if ('append' == $this->colorPicker && $color = \request('vic_color')) {
-            $value['icon'] = $value['icon'] . ' ' . str_replace('#', 'vic-', $color);
+            if (is_string($value)) {
+                $value .= ' ' . str_replace('#', 'vic-', $color);
+            } else {
+                $value['icon'] = $value['icon'] . ' ' . str_replace('#', 'vic-', $color);
+            }
 
             $colors = array_unique([$color, ...admin_setting_array('weiwait_icon_color')]);
             admin_setting(['weiwait_icon_color' => $colors]);
