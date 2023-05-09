@@ -16,7 +16,7 @@
         "php": "^8.0",
         "laravel/framework": "^9.0",
         "dcat/laravel-admin": "~2.0",
-        "iidestiny/laravel-filesystem-oss": "^3.1",
+        "iidestiny/laravel-filesystem-oss": "^4.0",
         "overtrue/laravel-filesystem-qiniu": "^2.1",
         "overtrue/laravel-filesystem-cos": "^3.1",
         "qcloud_sts/qcloud-sts-sdk": "^3.0",
@@ -34,5 +34,19 @@
                 "Weiwait\\DcatVue\\DcatVueServiceProvider"
             ]
         }
-    }
+    },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "iidestiny/laravel-filesystem-oss",
+                "version": "4.0.0",
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/weiwait/laravel-filesystem-oss.git",
+                    "reference": "master"
+                }
+            }
+        }
+    ]
 }

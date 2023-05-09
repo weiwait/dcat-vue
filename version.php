@@ -131,4 +131,7 @@ return [
     '2.11.0' => [
         "covered the icon field of form",
     ],
+    '2.12.0' => [
+        "supported laravel 10",
+    ],
 ];
