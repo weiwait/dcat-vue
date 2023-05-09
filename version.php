@@ -134,4 +134,7 @@ return [
     '2.12.0' => [
         "supported laravel 10",
     ],
+    '2.12.1' => [
+        "fixed bugs",
+    ],
 ];
