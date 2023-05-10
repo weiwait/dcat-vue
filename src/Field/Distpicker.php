@@ -171,4 +171,9 @@ class Distpicker extends Field
 
         return view($this->view(), $this->variables());
     }
+
+    protected function formatAttributes()
+    {
+        return $this->attributes;
+    }
 }

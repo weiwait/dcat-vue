@@ -143,4 +143,7 @@ return [
     '2.12.3' => [
         "fixed bugs",
     ],
+    '2.12.4' => [
+        "optimizing",
+    ],
 ];
