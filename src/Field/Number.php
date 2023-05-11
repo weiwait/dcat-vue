@@ -6,18 +6,12 @@ use Dcat\Admin\Form\Field;
 use Weiwait\DcatVue\Field\Traits\FieldCommon;
 use Weiwait\DcatVue\Field\Traits\HasWatch;
 
-class Number extends Field\Number
+class Number extends Field
 {
     use FieldCommon, HasWatch;
 
     public function render()
     {
-        /****************************** parent ************************************/
-        $this->addVariables([
-            'prepend' => $this->prepend,
-            'append'  => $this->append,
-        ]);
-
         /****************************** field ************************************/
 
         $this->addVariables([
@@ -108,5 +102,21 @@ class Number extends Field\Number
         ]);
 
         return $this;
+    }
+
+    protected function prepareInputValue($value): float|int|string|null
+    {
+        return is_numeric($value) ? $value : null;
+    }
+
+    public function value($value = null)
+    {
+        if (is_null($value)) {
+            $value = parent::value();
+
+            return is_numeric($value) ? $value : null;
+        }
+
+        return parent::value($value);
     }
 }
