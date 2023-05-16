@@ -16,7 +16,7 @@
         "php": "^8.0",
         "laravel/framework": "^9.0|^10.0",
         "dcat/laravel-admin": "~2.0",
-        "weiwait/laravel-filesystem-oss": "^4.0",
+        "weiwait/laravel-filesystem-oss": ">3.*",
         "overtrue/laravel-filesystem-qiniu": "^2.1",
         "overtrue/laravel-filesystem-cos": "^3.1",
         "qcloud_sts/qcloud-sts-sdk": "^3.0",
