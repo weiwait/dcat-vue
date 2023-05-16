@@ -19,6 +19,7 @@ use Weiwait\DcatVue\Field\MultipleImage;
 use Weiwait\DcatVue\Field\MultipleSelect;
 use Weiwait\DcatVue\Field\Number;
 use Weiwait\DcatVue\Field\Select;
+use Weiwait\DcatVue\Field\Sku;
 use Weiwait\DcatVue\Field\Tag;
 
 class DcatVueServiceProvider extends ServiceProvider
@@ -65,6 +66,7 @@ class DcatVueServiceProvider extends ServiceProvider
         Form::extend('icon', Icon::class);
         Form::extend('vIcon', Icon::class);
         Form::extend('oIcon', Form\Field\Icon::class);
+        Form::extend('vSku', Sku::class);
 
         Admin::requireAssets('@weiwait.dcat-vue');
 
